@@ -1,0 +1,36 @@
+/* BTNS */
+.btn-primary,
+.btn-secondary,
+.btn-danger {
+	display: inline-block;
+	outline: 0;
+	border: none;
+	cursor: pointer;
+	border-radius: 4px;
+	font-size: 18px;
+	padding: 7px 32px 5px;
+    text-align: center;
+    align-items: flex-start;
+    text-transform: uppercase;
+}
+
+.btn-primary:hover,
+.btn-secondary:hover,
+.btn-danger:hover {
+    opacity: 0.9;
+}
+
+.btn-primary {
+	background-color: var(--colors-primary);
+	color: white;
+}
+
+.btn-secondary{
+    background-color: var(--colors-secondary);
+	color: white;
+}
+
+.btn-danger{
+    background-color: var(--colors-danger);
+	color: white;
+}

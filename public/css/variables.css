@@ -1,0 +1,26 @@
+/* VARS */
+:root {
+    --colors-primary: #1DBAD3;
+    --colors-secondary: #86C51F;
+    --colors-danger: #EC3F5F;
+    --colors-gray: #aeaeae;
+
+	--page-header-bgColor: #222E44;
+	--page-header-bgColor-hover: #222E44;
+	--page-header-txtColor: #FFFFFF;
+	--page-breadCrumbs-bgColor: #DEE2E6;
+	--page-breadCrumbs-txtColor: #333333;
+	--page-content-bgColor: #FFFFFF;
+	--page-content-txtColor: #000000;
+	--page-content-card: #F5F9F9;
+
+	--box-shadow: 0 1px 10px 2px rgba(0, 0, 0, 0.15);
+	--border-radius: 10px;
+
+	--page-header-width: 100px;
+	--page-nav-height: 72px;
+
+	--page-breadCrumbs-height: 50px;
+
+	--page-safe-top: calc(var(--page-nav-height) + var(--page-breadCrumbs-height));
+}
