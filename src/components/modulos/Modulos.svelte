@@ -1,6 +1,4 @@
 <script>
-    import { onMount } from "svelte";
-
     import EmptyState from "../Empty_state.svelte";
     import CardModulo from "./Card_modulo.svelte";
 

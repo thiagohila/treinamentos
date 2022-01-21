@@ -1,7 +1,8 @@
 <script>
-    import { onMount } from "svelte";
     import { getContext } from "svelte";
+    import { trainingsStore } from "../../store/training_store";
 
+    import Spinner from "../Spinner.svelte";
     import ResumoTreinamento from "./Resumo_treinamento.svelte";
     import Modulos from "../modulos/Modulos.svelte";
     import ModuloSalvar from "../modulos/Salvar_modulo.svelte";
@@ -11,76 +12,10 @@
     const openModal = getContext("simple-modal").open;
 
     export let trainingId;
-    export let training = {};
-    let modules = [];
+    $: training = $trainingsStore.data.find(
+            (training) => training.id == trainingId
+        );
     let activeTab = "modulos";
-
-    let mockTraining = {
-        id: 1,
-        status: 1,
-        name: "Primeiro treino",
-        description: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
-        workload: "10",
-        activationDate: "2022-01-01",
-        deactivationDate: "2022-02-01",
-        modules: [
-            {
-                id: 1,
-                status: 1,
-                name: "Primeiro modulo",
-                description:
-                    "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
-                classes: [
-                    // {
-                    //     id: 1,
-                    //     name: "Primeira aula",
-                    //     content:
-                    //         "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
-                    // },
-                    // {
-                    //     id: 2,
-                    //     name: "Segunda aula",
-                    //     content:
-                    //         "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
-                    // },
-                ],
-            },
-            {
-                id: 2,
-                status: 0,
-                name: "Segundo treino",
-                description:
-                    "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
-                classes: [
-                    {
-                        id: 1,
-                        name: "Primeira aula",
-                        content:
-                            "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
-                    },
-                    {
-                        id: 2,
-                        name: "Segunda aula",
-                        content:
-                            "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
-                    },
-                    {
-                        id: 3,
-                        name: "Terceira aula",
-                        content:
-                            "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
-                    },
-                ],
-            },
-        ],
-    };
-
-    onMount(() => {
-        // TODO get do treino (cache & api)
-        training = mockTraining;
-        modules = training.modules;
-        // modules = [];
-    });
 
     const openNewModule = () => openModal(ModuloSalvar);
     const openNewClass = () => openModal(AulaSalvar);
@@ -111,12 +46,13 @@
                 class="tablinks active"
                 on:click={(event) => changeTab(event, "modulos")}>Módulo</button
             >
-            <button class="tablinks" on:click={(event) => changeTab(event, "aulas")}
-                >Aulas</button
+            <button
+                class="tablinks"
+                on:click={(event) => changeTab(event, "aulas")}>Aulas</button
             >
         </div>
         <div class="cta">
-            {#if activeTab == "modulos" || modules.length == 0}
+            {#if activeTab == "modulos" || training.modules.length == 0}
                 <div class="btn-primary" on:click={openNewModule}>
                     NOVO MÓDULO
                 </div>
@@ -126,13 +62,17 @@
         </div>
     </div>
     <div class="content">
-        <div class="tabs">
-            <Modulos trainingId={training.id} {modules} />
-            <Aulas trainingId={training.id} {modules} />
-        </div>
-        <div class="description">
-            <ResumoTreinamento {training} />
-        </div>
+        {#if $trainingsStore.isLoading || training == undefined}
+            <Spinner />
+        {:else}
+            <div class="tabs">
+                <Modulos trainingId={training.id} modules={training.modules} />
+                <Aulas trainingId={training.id} modules={training.modules} />
+            </div>
+            <div class="description">
+                <ResumoTreinamento {training} />
+            </div>
+        {/if}
     </div>
 </section>
 

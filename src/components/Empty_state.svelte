@@ -1,13 +1,13 @@
 <script>
-	export let message = "Nenhum item cadastrado.";
+    export let message = "Nenhum item cadastrado.";
 </script>
 
 <section class="emptyState">
-	{message}
+    {message}
 </section>
 
 <style>
-	:global(.emptyState) {
+    :global(.emptyState) {
         display: flex;
         justify-content: center;
         font-size: 18px;

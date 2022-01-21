@@ -10,7 +10,7 @@
     let error = {};
     let loading = false;
 
-    let saveTraining = () => {
+    const saveTraining = () => {
         if (!validateFields()) return false;
 
         if (!training.id) {
@@ -20,7 +20,7 @@
         }
     };
 
-    let createTraining = () => {
+    const createTraining = () => {
         loading = true;
         trainingsStore
             .createTraining({ ...training, status: 1 })
@@ -31,7 +31,7 @@
             .finally(() => (loading = false));
     };
 
-    let updateTraining = () => {
+    const updateTraining = () => {
         trainingsStore
             .updateTraining(training)
             .then((result) => {
@@ -39,6 +39,18 @@
             })
             .catch((err) => {})
             .finally(() => (loading = false));
+    };
+
+    const disableTraining = () => {
+        alert("Não implementado");
+    };
+
+    const uploadImage = () => {
+        alert("Não implementado");
+    };
+
+    const helper = () => {
+        alert("Não implementado");
     };
 
     function validateFields() {
@@ -64,14 +76,14 @@
         <div class="title">
             {training == undefined ? "Editar treinamento" : "Novo treinamento"}
         </div>
-        <div class="help">
+        <div class="help" on:click={helper}>
             <img src="/images/bi_question_circle.svg" alt="Ajuda" />
         </div>
     </div>
     <div class="content">
         <form id="salvar-treinamento-form">
             <div class="input">
-                <div class="image-picker">
+                <div class="image-picker" on:click={uploadImage}>
                     <img src="/images/bi_camera.svg" alt="Seletor imagem" />
                     Selecione uma imagem
                 </div>
@@ -137,7 +149,9 @@
         </form>
     </div>
     <div class="footer">
-        <button class="btn-danger" disabled={loading}>DESABILITAR</button>
+        <button class="btn-danger" disabled={loading} on:click={disableTraining}
+            >DESABILITAR</button
+        >
         <button
             class="btn-secondary"
             disabled={loading}

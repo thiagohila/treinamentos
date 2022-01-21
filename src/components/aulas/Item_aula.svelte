@@ -5,10 +5,14 @@
 
     const openModal = getContext("simple-modal").open;
 
+    export let trainingClass;
+
     const editTrainingClass = (trainingClass) =>
         openModal(AulaSalvar, { trainingClass: trainingClass });
 
-    export let trainingClass;
+    const deleteTrainingClass = () => {
+        alert("Não implementado");
+    };
 </script>
 
 <div class="item-class">
@@ -21,7 +25,11 @@
             <img src="/images/bi_pencil_square.svg" alt="Editar" />
         </div>
         <div class="action">
-            <img src="/images/bi_trash.svg" alt="Remover" />
+            <img
+                src="/images/bi_trash.svg"
+                on:click={deleteTrainingClass}
+                alt="Remover"
+            />
         </div>
     </div>
 </div>

@@ -26,7 +26,7 @@
   export let key = "simple-modal";
   export let closeButton = true;
   export let closeOnEsc = true;
-  export let closeOnOuterClick = true;
+  export let closeOnOuterClick = false;
   export let styleBg = {};
   export let styleWindowWrap = {};
   export let styleWindow = {};
@@ -299,12 +299,12 @@
     background: white;
   }
 
-  .content {
+  /* .content {
     position: relative;
     padding: 1rem;
     max-height: calc(100vh - 4rem);
     overflow: auto;
-  }
+  } */
 
   .close {
     display: block;

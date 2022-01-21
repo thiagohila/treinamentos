@@ -1,7 +1,7 @@
 <script>
-    import { Router, Route } from "svelte-navigator";
+    import { Router } from "svelte-navigator";
 </script>
 
 <Router>
-    <slot></slot>
+    <slot />
 </Router>

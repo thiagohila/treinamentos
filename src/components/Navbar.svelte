@@ -1,5 +1,5 @@
 <script>
-	import {user} from '../store/user_store';
+	import { user } from "../store/user_store";
 </script>
 
 <section class="navbar">
@@ -8,7 +8,11 @@
 			<div class="account">{$user.name}</div>
 			<div class="position">{$user.role}</div>
 		</div>
-		<img class="avatar" src="{$user.avatar}" alt="Avatar" />
+		<img
+			class="avatar"
+			src={$user.avatar ? $user.avatar : "/images/default_profile.png"}
+			alt="Avatar"
+		/>
 	</div>
 </section>
 
@@ -50,8 +54,7 @@
 		width: 60px;
 		margin-left: 15px;
 		border-radius: 50%;
-		background-color: #FFFFFF;
-		
+		background-color: #ffffff;
 	}
 
 	/* RESPONSIVE */

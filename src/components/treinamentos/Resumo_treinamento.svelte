@@ -5,21 +5,23 @@
 </script>
 
 <div class="resumo">
-    <div class="image" style="background-image: url('/images/default_logo_modulo.png');">
-    </div>
+    <div
+        class="image"
+        style="background-image: url('/images/default_logo_modulo.png');"
+    />
     <div class="content">
         <div class="info">
             <div class="title">
                 <div class="name">{training.name}</div>
                 <div class="status">
-                    <StatusPill status="{training.status}" />
+                    <StatusPill status={training.status} />
                 </div>
             </div>
             <div class="description">
-                {training.description}
+                {training.description ?? "Sem descrição"}
             </div>
             <div class="duration">
-                Duração: <span>{training.workload}</span>
+                Duração: <span>{training.workload ?? 0}</span>
             </div>
         </div>
     </div>
@@ -52,7 +54,7 @@
         width: 100%;
     }
 
-    .resumo .content .info .title{
+    .resumo .content .info .title {
         display: flex;
         width: 100%;
         justify-content: space-between;
@@ -76,12 +78,12 @@
         margin-bottom: 5px;
     }
 
-    .resumo .content .info .duration{
+    .resumo .content .info .duration {
         font-size: 14px;
         font-weight: bold;
     }
 
-    .resumo .content .info .duration span{
+    .resumo .content .info .duration span {
         font-weight: normal;
     }
 </style>

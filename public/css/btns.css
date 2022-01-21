@@ -9,34 +9,43 @@
 	border-radius: 4px;
 	font-size: 18px;
 	padding: 7px 32px 5px;
-    text-align: center;
-    align-items: flex-start;
-    text-transform: uppercase;
+	text-align: center;
+	align-items: flex-start;
+	text-transform: uppercase;
 }
 
 .btn-primary:hover,
 .btn-secondary:hover,
 .btn-danger:hover {
-    opacity: 0.9;
+	opacity: 0.9;
 }
 
 .btn-primary:disabled,
 .btn-secondary:disabled,
-.btn-danger:disabled{
-	background-color: var(--colors-gray);	
+.btn-danger:disabled {
+	background-color: var(--colors-gray);
 }
 
-.btn-primary {
+.btn-primary:active,
+.btn-secondary:active,
+.btn-danger:active {
+	opacity: 0.9;
+}
+
+.btn-primary,
+.btn-primary:active {
 	background-color: var(--colors-primary);
 	color: white;
 }
 
-.btn-secondary{
-    background-color: var(--colors-secondary);
+.btn-secondary,
+.btn-secondary:active {
+	background-color: var(--colors-secondary);
 	color: white;
 }
 
-.btn-danger{
-    background-color: var(--colors-danger);
+.btn-danger,
+.btn-danger:active {
+	background-color: var(--colors-danger);
 	color: white;
 }

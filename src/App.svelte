@@ -1,24 +1,29 @@
 <script>
+	import { onMount } from "svelte";
 	import { Router, Route } from "svelte-navigator";
 	import Modal from "./components/modal/Modal.svelte";
 	import { modal } from "./components/modal/stores.js";
+	import { trainingsStore } from "./store/training_store";
 
 	import SideMenu from "./components/Side_menu.svelte";
 	import Navbar from "./components/Navbar.svelte";
 	import BreadCrumbs from "./components/Breadcrumbs.svelte";
-
 	import Home from "./components/Home.svelte";
 	import Treinamentos from "./components/treinamentos/Treinamentos.svelte";
 	import Treinamento from "./components/treinamentos/Treinamento.svelte";
 
 	export let url = "";
 
+	onMount(async () => {
+		await trainingsStore.getTrainings();
+	});
+
 	function createAnnouncement(route, location) {
-		history.pushState(location.pathname, '', location.pathname)
+		history.pushState(location.pathname, "", location.pathname);
 	}
 </script>
 
-<Router {url} a11y={{createAnnouncement}}>
+<Router {url} a11y={{ createAnnouncement }}>
 	<Modal show={$modal}>
 		<SideMenu />
 		<Navbar />
@@ -33,8 +38,8 @@
 				</Route>
 			</Route>
 			<Route>
-				<h3>Default</h3>
-				<p>No Route could be matched.</p>
+				<h3>404</h3>
+				<p>Página não encontrada.</p>
 			</Route>
 		</main>
 	</Modal>

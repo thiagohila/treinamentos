@@ -21,6 +21,7 @@ export const localStore = (key, initial) => {
       // Simulador de api call
       const oldData = toObj(localStorage.getItem(key));
       newValue.id = oldData.length + 1;
+      newValue.modules = [{id:1}];
       const newData = [...oldData, newValue]
 
       localStorage.setItem(key, toString(newData));

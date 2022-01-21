@@ -1,5 +1,5 @@
 <script>
-    export let smallSpinner;
+    export let smallSpinner = false;
 </script>
 
 <div class="loader" class:small={smallSpinner} />

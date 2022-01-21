@@ -1,24 +1,42 @@
 <script>
     import { getContext } from "svelte";
-    
+
     const closeModal = getContext("simple-modal").close;
 
     export let module;
+
+    const saveModule = () => {
+        alert("Não implementado");
+    };
+
+    const disableModule = () => {
+        alert("Não implementado");
+    };
+
+    const uploadImage = () => {
+        alert("Não implementado");
+    };
+
+    const helper = () => {
+        alert("Não implementado");
+    };
 </script>
 
 <div id="modulo-salvar">
     <div class="header">
         <!-- TODO colocar em componente BTNFECHAR -->
-        <div class="close" on:click="{closeModal}"><img src="/images/bi_x.svg" alt="Fechar" /></div>
-        <div class="title">{module ? 'Editar modulo' : 'Novo modulo'}</div>
-        <div class="help">
+        <div class="close" on:click={closeModal}>
+            <img src="/images/bi_x.svg" alt="Fechar" />
+        </div>
+        <div class="title">{module ? "Editar modulo" : "Novo modulo"}</div>
+        <div class="help" on:click={helper}>
             <img src="/images/bi_question_circle.svg" alt="Ajuda" />
         </div>
     </div>
     <div class="content">
         <form action="">
             <div class="input">
-                <div class="image-picker">
+                <div class="image-picker" on:click={uploadImage}>
                     <img src="/images/bi_camera.svg" alt="Seletor imagem" />
                     Selecione uma imagem
                 </div>
@@ -29,7 +47,7 @@
                     type="text"
                     name="modulo-nome"
                     id="modulo-nome"
-                    value="{module ? module.name : ''}"
+                    value={module ? module.name : ""}
                 />
             </div>
             <div class="input">
@@ -39,14 +57,14 @@
                     id="modulo-descricao"
                     cols="30"
                     rows="10"
-                    value="{module ? module.description : ''}"
+                    value={module ? module.description : ""}
                 />
             </div>
         </form>
     </div>
     <div class="footer">
-        <button class="btn-danger">DESABILITAR</button>
-        <button class="btn-secondary">SALVAR</button>
+        <button class="btn-danger" on:click={disableModule}>DESABILITAR</button>
+        <button class="btn-secondary" on:click={saveModule}>SALVAR</button>
     </div>
 </div>
 
@@ -126,7 +144,7 @@
         cursor: pointer;
     }
 
-    #modulo-salvar .content .input .image-picker img{
+    #modulo-salvar .content .input .image-picker img {
         margin-bottom: 12px;
     }
 

@@ -4,13 +4,13 @@
 
 <header class="page-header">
 	<nav>
-		<div role="button"
+		<!-- <div role="button"
 			class="toggle-mob-menu"
 			aria-expanded="false"
 			aria-label="open menu"
 		>
 			<img src="/images/burger.svg" alt="Menu" />
-		</div>
+		</div> -->
 		<ul class="admin-menu">
 			<li>
 				<Link to="/">
@@ -46,13 +46,13 @@
 		min-height: 100%;
 	}
 
-	.page-header .toggle-mob-menu {
+	/* .page-header .toggle-mob-menu {
 		margin-top: 60px;
 		display: flex;
 		align-items: center;
 		justify-content: center;
 		font-size: 0.9rem;
-	}
+	} */
 
 	.page-header .admin-menu {
 		display: flex;
@@ -67,7 +67,7 @@
 		margin-bottom: 50px;
 	}
 
-	.page-header .admin-menu :global(a){
+	.page-header .admin-menu :global(a) {
 		display: flex;
 		align-items: center;
 		justify-content: center;
@@ -76,7 +76,7 @@
 
 	/* RESPONSIVE */
 	@media screen and (max-width: 767px) {
-		.page-header{
+		.page-header {
 			position: static;
 			width: 100%;
 		}
@@ -85,9 +85,9 @@
 			flex-direction: row;
 		}
 
-		.page-header .toggle-mob-menu {
+		/* .page-header .toggle-mob-menu {
 			display: block;
-		}
+		} */
 
 		.page-header .admin-menu {
 			position: absolute;
@@ -102,7 +102,5 @@
 			transform: scale(0.95);
 			transition: all 0.2s;
 		}
-
-		
 	}
 </style>

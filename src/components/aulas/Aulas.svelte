@@ -1,12 +1,9 @@
 <script>
-    import { onMount } from "svelte";
-
     import EmptyState from "../Empty_state.svelte";
     import ItemModulo from "../modulos/Item_modulo.svelte";
 
     export let trainingId;
     export let modules = [];
-    modules = []
 </script>
 
 <div id="aulas" class="tab" style="display:none">
@@ -21,5 +18,4 @@
 </div>
 
 <style>
-    
 </style>

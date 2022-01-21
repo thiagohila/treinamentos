@@ -1,19 +1,19 @@
 <script>
     import { getContext } from "svelte";
     import { Link } from "svelte-navigator";
-    import {trainingsStore} from "../../store/training_store";
+    import { trainingsStore } from "../../store/training_store";
 
     import StatusPill from "../Status_pill.svelte";
     import TreinamentoSalvar from "./Salvar_treinamento.svelte";
 
     const openModal = getContext("simple-modal").open;
 
+    export let training;
+
     const editTraining = (training) =>
         openModal(TreinamentoSalvar, { training: training });
 
-    export let training;
-
-    let deleteTraining = (training) => {
+    const deleteTraining = (training) => {
         trainingsStore.deleteTraining(training);
     };
 </script>

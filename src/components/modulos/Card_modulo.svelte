@@ -9,6 +9,10 @@
     export let module = {};
 
     const editModule = (module) => openModal(ModuloSalvar, { module: module });
+
+    const deleteModule = () => {
+        alert("Não implementado");
+    };
 </script>
 
 <div class="card">
@@ -33,7 +37,7 @@
             <div class="edit" on:click={() => editModule(module)}>
                 <img src="/images/bi_pencil_square.svg" alt="Editar" />
             </div>
-            <div class="remove">
+            <div class="remove" on:click={deleteModule}>
                 <img src="/images/bi_trash.svg" alt="Remover" />
             </div>
         </div>
