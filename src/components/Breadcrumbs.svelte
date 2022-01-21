@@ -1,9 +1,24 @@
 <script>
-	
+	import { Link } from "svelte-navigator";
+	import url from "../store/breadcrumbs_store.js";
+
+	let locations = [];
+
+	$: locations = $url.pathname
+		.split("/")
+		.filter((item) => item !== "");
+
+	const capitalize = (s) => {
+		if (typeof s !== "string") return s;
+		return s.charAt(0).toUpperCase() + s.slice(1);
+	};
 </script>
 
 <section class="breadcrumbs">
-	<span>Home</span> <span class="marker">></span> <span>Treinamentos</span>
+	<Link to="/">Home</Link>
+	{#each locations as location}
+		<span class="marker">></span> <Link to="{location}">{capitalize(location)}</Link>
+	{/each}
 </section>
 
 <style>
@@ -25,5 +40,9 @@
 
 	.breadcrumbs .marker {
 		margin: 0 16px;
+	}
+
+	:global(a){
+		color: var(--page-breadCrumbs-txtColor) !important;
 	}
 </style>

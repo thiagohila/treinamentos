@@ -1,8 +1,9 @@
 <script>
     import { onMount } from "svelte";
     import { getContext } from "svelte";
-    import { trainings } from "../../store/training_store";
+    import { trainingsStore } from "../../store/training_store";
 
+    import Spinner from "../Spinner.svelte";
     import EmptyState from "../Empty_state.svelte";
     import CardTreinamento from "./Card_treinamento.svelte";
     import TreinamentoSalvar from "./Salvar_treinamento.svelte";
@@ -11,7 +12,9 @@
 
     // let trainings = [];
 
-    onMount(() => {
+    onMount(async () => {
+        await trainingsStore.getTrainings();
+        console.log("trainingsStore", trainingsStore);
         // trainings = [
         //     {
         //         id: 1,
@@ -33,6 +36,7 @@
         //         activationDate: "2022-01-01",
         //         deactivationDate: "2022-01-10",
         //     },
+
         // ];
     });
 
@@ -47,12 +51,16 @@
         </div>
     </div>
     <div>
-        {#if $trainings.length == 0}
-            <EmptyState message={"Nenhum trainamento cadastrado."} />
+        {#if $trainingsStore.isLoading && $trainingsStore.data.length == 0}
+            <Spinner />
+        {:else}
+            {#if $trainingsStore.data.length == 0}
+                <EmptyState message={"Nenhum trainamento cadastrado."} />
+            {/if}
+            {#each $trainingsStore.data as training}
+                <CardTreinamento {training} />
+            {/each}
         {/if}
-        {#each $trainings as training}
-            <CardTreinamento {training} />
-        {/each}
     </div>
 </section>
 

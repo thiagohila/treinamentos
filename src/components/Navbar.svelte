@@ -1,13 +1,14 @@
 <script>
+	import {user} from '../store/user_store';
 </script>
 
 <section class="navbar">
 	<div class="admin-profile">
 		<div>
-			<div class="account">Thiago Hila</div>
-			<div class="position">Dev</div>
+			<div class="account">{$user.name}</div>
+			<div class="position">{$user.role}</div>
 		</div>
-		<img class="avatar" src="/images/default_profile.png" alt="Avatar" />
+		<img class="avatar" src="{$user.avatar}" alt="Avatar" />
 	</div>
 </section>
 

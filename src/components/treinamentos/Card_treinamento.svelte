@@ -1,7 +1,8 @@
 <script>
     import { getContext } from "svelte";
     import { Link } from "svelte-navigator";
-    
+    import {trainingsStore} from "../../store/training_store";
+
     import StatusPill from "../Status_pill.svelte";
     import TreinamentoSalvar from "./Salvar_treinamento.svelte";
 
@@ -11,10 +12,14 @@
         openModal(TreinamentoSalvar, { training: training });
 
     export let training;
+
+    let deleteTraining = (training) => {
+        trainingsStore.deleteTraining(training);
+    };
 </script>
 
 <div class="card">
-    <Link class="link" to="{training.id.toString()}" />
+    <Link class="link" to={training.id.toString()} />
     <div class="image">
         <img src="/images/default_logo_treinamento.png" alt="Logo Svelte" />
     </div>
@@ -22,7 +27,7 @@
         <div class="info">
             <div class="name">{training.name}</div>
             <div class="description">
-                {training.description}
+                {training.description ? training.description : "Sem descrição"}
             </div>
         </div>
         <div class="extra">
@@ -31,7 +36,7 @@
                 <div class="action" on:click={() => editTraining(training)}>
                     <img src="/images/bi_pencil_square.svg" alt="Editar" />
                 </div>
-                <div class="action">
+                <div class="action" on:click={() => deleteTraining(training)}>
                     <img src="/images/bi_trash.svg" alt="Remover" />
                 </div>
             </div>

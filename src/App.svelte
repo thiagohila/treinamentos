@@ -12,9 +12,13 @@
 	import Treinamento from "./components/treinamentos/Treinamento.svelte";
 
 	export let url = "";
+
+	function createAnnouncement(route, location) {
+		history.pushState(location.pathname, '', location.pathname)
+	}
 </script>
 
-<Router {url}>
+<Router {url} a11y={{createAnnouncement}}>
 	<Modal show={$modal}>
 		<SideMenu />
 		<Navbar />

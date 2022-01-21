@@ -91,3 +91,14 @@ button:focus {
 ul {
 	list-style: none;
 }
+
+.input-error {
+	display: none;
+	color: var(--colors-danger);
+	font-size: 14px;
+	margin-top: 4px;
+}
+
+.input-error.show {
+	display: block;
+}
