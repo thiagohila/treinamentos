@@ -252,7 +252,7 @@
           {#if isFunction(state.closeButton)}
             <svelte:component this={state.closeButton} onClose={close} />
           {:else}
-            <button on:click={close} class="close" style={cssCloseButton} />
+            <!-- <button on:click={close} class="close" style={cssCloseButton} /> -->
           {/if}
         {/if}
         <div style={cssContent}>
@@ -306,7 +306,7 @@
     overflow: auto;
   } */
 
-  .close {
+  /* .close {
     display: block;
     box-sizing: border-box;
     position: absolute;
@@ -379,5 +379,5 @@
   .close:focus,
   .close:active {
     outline: none;
-  }
+  } */
 </style>
