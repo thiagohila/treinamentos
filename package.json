@@ -5,7 +5,8 @@
   "scripts": {
     "build": "rollup -c -s",
     "dev": "rollup -c -w --single",
-    "start": "sirv public --no-clear --single"
+    "start": "sirv public --no-clear --single",
+    "heroku-postbuild": "npm run build"
   },
   "devDependencies": {
     "@rollup/plugin-commonjs": "^17.0.0",
